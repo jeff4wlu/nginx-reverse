@@ -1,0 +1,14 @@
+
+
+
+server {
+   listen 80;
+   location / {
+      proxy_pass http://backend;
+   }
+}
+
+upstream backend {
+   server ${MANAGER_IP}:8080;
+   server ${WORKER_IP}:8080;
+}
